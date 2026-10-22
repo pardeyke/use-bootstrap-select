@@ -25,7 +25,7 @@ import ${pkg.libName} from '${pkg.name}'`
     <script src="node_modules/${pkg.name}/dist/${pkg.name}.min.js"></script>
   </head>
   <body>
-    <select id="example" class="form-select">
+    <select id="example" class="form-control">
       <option value="apple">Apple</option>
       <option value="banana">Banana</option>
       <option value="grape">Grape</option>
@@ -54,7 +54,7 @@ ${cdnJs}`
     ${cdnJs}
   </head>
   <body>
-    <select id="example" class="form-select">
+    <select id="example" class="form-control">
       <option value="apple">Apple</option>
       <option value="banana">Banana</option>
       <option value="grape">Grape</option>

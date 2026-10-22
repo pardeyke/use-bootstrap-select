@@ -1,4 +1,4 @@
-import{o as O,i as t,t as D,p as e,b as G}from"./index-vrhIV-yS.js";var H=D('<div><h2 class="fw-bold mb-4">Install</h2><h5>Install from npm:</h5><ol><li><p>Run the following command in the terminal:</p><pre><code class=language-bash></code></pre></li><li><p>After installation, you can import the library into your project as follows:</p><pre><code class=language-javascript></code></pre></li><li><p>Or, since it also comes with an IIFE bundle, you can insert it directly into your HTML:</p><pre><code class=language-html></code></pre></li></ol><h5>Install from cdn:</h5><ol><li><p>Add the following script in the <code>&lt;head&gt;</code> tag of your HTML:</p><pre><code class=language-html></code></pre><p>Example:</p><pre><code class=language-html>');function L(){const l=`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/${e.name}@${e.version}/dist/${e.name}.min.css">`,i=`<script src="https://cdn.jsdelivr.net/npm/${e.name}@${e.version}/dist/${e.name}.min.js"><\/script>`,r=`npm install ${e.name}`,c=`import '${e.name}/dist/${e.name}.css'
+import{o as O,i as t,p as e,t as D,b as G}from"./index-BDsqcfjK.js";var H=D('<div><h2 class="fw-bold mb-4">Install</h2><h5>Install from npm:</h5><ol><li><p>Run the following command in the terminal:</p><pre><code class=language-bash></code></pre></li><li><p>After installation, you can import the library into your project as follows:</p><pre><code class=language-javascript></code></pre></li><li><p>Or, since it also comes with an IIFE bundle, you can insert it directly into your HTML:</p><pre><code class=language-html></code></pre></li></ol><h5>Install from cdn:</h5><ol><li><p>Add the following script in the <code>&lt;head&gt;</code> tag of your HTML:</p><pre><code class=language-html></code></pre><p>Example:</p><pre><code class=language-html>');function L(){const l=`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/${e.name}@${e.version}/dist/${e.name}.min.css">`,i=`<script src="https://cdn.jsdelivr.net/npm/${e.name}@${e.version}/dist/${e.name}.min.js"><\/script>`,r=`npm install ${e.name}`,c=`import '${e.name}/dist/${e.name}.css'
 import ${e.libName} from '${e.name}'`,d=`<!doctype html>
 <html lang="en">
   <head>
@@ -10,7 +10,7 @@ import ${e.libName} from '${e.name}'`,d=`<!doctype html>
     <script src="node_modules/${e.name}/dist/${e.name}.min.js"><\/script>
   </head>
   <body>
-    <select id="example" class="form-select">
+    <select id="example" class="form-control">
       <option value="apple">Apple</option>
       <option value="banana">Banana</option>
       <option value="grape">Grape</option>
@@ -33,7 +33,7 @@ ${i}`,h=`<!doctype html>
     ${i}
   </head>
   <body>
-    <select id="example" class="form-select">
+    <select id="example" class="form-control">
       <option value="apple">Apple</option>
       <option value="banana">Banana</option>
       <option value="grape">Grape</option>
