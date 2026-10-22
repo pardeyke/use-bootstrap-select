@@ -48,6 +48,13 @@ $validation-states: (
   }
 }
 
+// Bootstrap 6 wraps its CSS in cascade layers and reserves a `custom` layer
+// between `components` and `utilities`. Emitting into it lets these rules
+// override Bootstrap's component styles while Bootstrap utilities (e.g.
+// `.position-relative`, `.d-none`) still override them. Load this file after
+// Bootstrap's CSS so the layer order is already declared.
+@layer custom {
+
 // Hide target
 .#{$target} {
   position: fixed;
@@ -181,3 +188,5 @@ $validation-states: (
     }
   }
 }
+
+} // @layer custom
