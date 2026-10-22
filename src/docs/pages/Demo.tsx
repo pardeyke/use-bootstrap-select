@@ -36,6 +36,7 @@ function LiveDemo() {
   const [createPosition, setCreatePosition] = createSignal<'first' | 'last'>('first')
   const [validated, setValidated] = createSignal(false)
   const [validationState, setValidationState] = createSignal<'is-valid' | 'is-invalid'>('is-valid')
+  const [floating, setFloating] = createSignal(false)
 
   const fruit = () => ([
     {
@@ -128,6 +129,7 @@ function LiveDemo() {
         ' data-max-height="25rem"',
         ' data-no-results-text="No results found"',
         ' data-creatable-text="Add <b>{value}</b>..."',
+        ' data-creatable-text="Add &lt;b&gt;{value}&lt;/b&gt;..."',
         ' data-create-position="first"',
         ' data-clearable="false"',
         ' data-searchable="false"',
@@ -135,6 +137,9 @@ function LiveDemo() {
       ], '', outerHTML)
       outerHTML = outerHTML.replace('multiple=""', 'multiple')
       outerHTML = outerHTML.replaceAll('disabled=""', 'disabled')
+      if (floating()) {
+        outerHTML = `<div class="form-floating"><label for="example">Example label</label>${outerHTML}</div>`
+      }
       outerHTML = outerHTML + codeDemo.replace('<', '\n\n<')
       outerHTML = await format(outerHTML, { parser: 'html', plugins: [htmlParser] })
       outerHTML = escapeHtml(outerHTML)
@@ -181,13 +186,13 @@ function LiveDemo() {
     }
   })
 
-  createEffect(on([size, position, maxHeight, optgroup, multiple, disabled, placeholder, clearable, searchable, noResultsText, creatable, creatableText, createPosition, validated, validationState], () => {
+  createEffect(on([size, position, maxHeight, optgroup, multiple, disabled, placeholder, clearable, searchable, noResultsText, creatable, creatableText, createPosition, validated, validationState, floating], () => {
     setTimeout(() => {
       generateCode()
     }, 150)
   }))
 
-  createEffect(on([size, position, maxHeight, optgroup, multiple, disabled, placeholder, clearable, searchable, noResultsText, creatable, creatableText, createPosition, validated, validationState], (next, prev) => {
+  createEffect(on([size, position, maxHeight, optgroup, multiple, disabled, placeholder, clearable, searchable, noResultsText, creatable, creatableText, createPosition, validated, validationState, floating], (next, prev) => {
     setTimeout(() => {
       if (target) {
         const prevPlaceholder = !prev ? false : prev[6]
@@ -207,8 +212,8 @@ function LiveDemo() {
       <div class="card-body">
         <div class="row g-4">
           <div class="col-12 lg:col-8 xl:col-9">
-            <div style="max-width: 25rem" class="mx-auto">
-              <label for="example" class="form-label fw-bold">Example label</label>
+            <div style="max-width: 25rem" class="mx-auto" classList={{ 'form-floating': floating() }}>
+              <label for="example" classList={{ 'form-label fw-bold': !floating() }}>Example label</label>
               <select
                 id="example"
                 ref={target}
@@ -322,6 +327,7 @@ function LiveDemo() {
                 <label for="maxHeight" class="form-label mb-0 fw-medium">maxHeight</label>
                 <input value={maxHeight()} oninput={e => setMaxHeight(e.target.value.trim())} type="text" class="form-control form-control-sm" id="maxHeight" autocomplete="off" />
               </div>
+              <Switcher label="Floating label" checked={floating} setter={setFloating} />
               <Switcher label="Optgroup" checked={optgroup} setter={setOptgroup} />
               <Switcher label="Multiple" checked={multiple} setter={setMultiple} />
               <Switcher label="Disabled" checked={disabled} setter={setDisabled} />

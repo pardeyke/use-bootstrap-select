@@ -172,6 +172,24 @@ $validation-states: (
   }
 }
 
+// Floating labels (Bootstrap 6 `.form-floating`). The label precedes the
+// <select>, so Bootstrap's `label:has(~ .form-control:is(select))` already
+// floats it. The toggle sits two levels deeper than Bootstrap's
+// `.form-floating > .form-control` selector reaches, so mirror its box here.
+// Only `min-height` is set so a multiple select can grow with its chips.
+.form-floating {
+  > .#{$wrapper} > .#{$name} > .form-control {
+    min-height: var(--form-floating-height);
+    padding: var(--form-floating-input-padding-t) var(--form-floating-padding-x) var(--form-floating-input-padding-b);
+    line-height: var(--form-floating-line-height);
+  }
+
+  // Anchor the label to the top so it stays put when chips wrap onto new rows.
+  > label:has(~ .#{$target}) {
+    align-items: flex-start;
+  }
+}
+
 // Validation. Source: bootstrap/scss/forms/_validation.scss (form-control block)
 @each $state, $theme in $validation-states {
   .form-control {
