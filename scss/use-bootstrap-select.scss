@@ -180,8 +180,17 @@ $validation-states: (
 .form-floating {
   > .#{$wrapper} > .#{$name} > .form-control {
     min-height: var(--form-floating-height);
-    padding: var(--form-floating-input-padding-t) var(--form-floating-padding-x) var(--form-floating-input-padding-b);
+    // Longhands so `.form-control-caret`'s inline-end padding (room for the
+    // chevron) survives. Block padding is symmetric here; the extra top
+    // offset for the floated label is applied to the content only, so the
+    // clear button stays centered next to the chevron.
+    padding-block: var(--form-floating-input-padding-b);
+    padding-inline-start: var(--form-floating-padding-x);
     line-height: var(--form-floating-line-height);
+
+    > .content-wrapper {
+      padding-top: calc(var(--form-floating-input-padding-t) - var(--form-floating-input-padding-b));
+    }
   }
 
   // Anchor the label to the top so it stays put when chips wrap onto new rows.

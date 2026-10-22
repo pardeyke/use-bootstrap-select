@@ -329,7 +329,7 @@ export default class UseBootstrapSelect {
       // DropdownToggleContentWrapper
       const DropdownToggleContentWrapper = ({ children }: WithChildren) => {
         return (
-          <div class={`${classFlex} flex-wrap flex-grow-1 w-100 overflow-hidden`}>
+          <div class={`content-wrapper ${classFlex} flex-wrap flex-grow-1 w-100 overflow-hidden`}>
             {children}
           </div>
         )
